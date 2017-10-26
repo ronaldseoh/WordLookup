@@ -1,0 +1,780 @@
+[
+    {
+        "outputFile": "/Users/se9/Documents/git/WordLookup/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 7,
+                    "endColumn": 19,
+                    "endOffset": 258
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/arrays.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 1,
+                        "startOffset": 52,
+                        "endLine": 7,
+                        "endColumn": 19,
+                        "endOffset": 255
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 263,
+                    "endColumn": 47,
+                    "endOffset": 306
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 165,
+                        "endColumn": 47,
+                        "endOffset": 208
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 311,
+                    "endColumn": 53,
+                    "endOffset": 360
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 574,
+                        "endColumn": 53,
+                        "endOffset": 623
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 365,
+                    "endColumn": 84,
+                    "endOffset": 445
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 628,
+                        "endColumn": 84,
+                        "endOffset": 708
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 450,
+                    "endColumn": 56,
+                    "endOffset": 502
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 965,
+                        "endColumn": 56,
+                        "endOffset": 1017
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 507,
+                    "endColumn": 47,
+                    "endOffset": 550
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 117,
+                        "endColumn": 47,
+                        "endOffset": 160
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 555,
+                    "endColumn": 55,
+                    "endOffset": 606
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 213,
+                        "endColumn": 55,
+                        "endOffset": 264
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 611,
+                    "endColumn": 79,
+                    "endOffset": 686
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 494,
+                        "endColumn": 79,
+                        "endOffset": 569
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 691,
+                    "endColumn": 61,
+                    "endOffset": 748
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 432,
+                        "endColumn": 61,
+                        "endOffset": 489
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 753,
+                    "endColumn": 60,
+                    "endOffset": 809
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 60,
+                        "endOffset": 112
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 814,
+                    "endColumn": 37,
+                    "endOffset": 847
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 816,
+                        "endColumn": 37,
+                        "endOffset": 849
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 852,
+                    "endColumn": 58,
+                    "endOffset": 906
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 854,
+                        "endColumn": 58,
+                        "endOffset": 908
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 911,
+                    "endColumn": 56,
+                    "endOffset": 963
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 713,
+                        "endColumn": 56,
+                        "endOffset": 765
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 968,
+                    "endColumn": 75,
+                    "endOffset": 1039
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 269,
+                        "endColumn": 75,
+                        "endOffset": 340
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1044,
+                    "endColumn": 86,
+                    "endOffset": 1126
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 345,
+                        "endColumn": 86,
+                        "endOffset": 427
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1131,
+                    "endColumn": 51,
+                    "endOffset": 1178
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 913,
+                        "endColumn": 51,
+                        "endOffset": 960
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1183,
+                    "endColumn": 90,
+                    "endOffset": 1269
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1082,
+                        "endColumn": 90,
+                        "endOffset": 1168
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1274,
+                    "endColumn": 59,
+                    "endOffset": 1329
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1022,
+                        "endColumn": 59,
+                        "endOffset": 1077
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1334,
+                    "endColumn": 45,
+                    "endOffset": 1375
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 770,
+                        "endColumn": 45,
+                        "endOffset": 811
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1380,
+                    "endLine": 33,
+                    "endColumn": 10,
+                    "endOffset": 1802
+                },
+                "from": {
+                    "file": "/Users/se9/Documents/git/WordLookup/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 2,
+                        "startOffset": 53,
+                        "endLine": 9,
+                        "endColumn": 10,
+                        "endOffset": 475
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/se9/AndroidStudioProjects/WordLookup/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 7,
+                    "endColumn": 19,
+                    "endOffset": 258
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/arrays.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 1,
+                        "startOffset": 52,
+                        "endLine": 7,
+                        "endColumn": 19,
+                        "endOffset": 255
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 263,
+                    "endColumn": 47,
+                    "endOffset": 306
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 165,
+                        "endColumn": 47,
+                        "endOffset": 208
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 311,
+                    "endColumn": 53,
+                    "endOffset": 360
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 574,
+                        "endColumn": 53,
+                        "endOffset": 623
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 365,
+                    "endColumn": 84,
+                    "endOffset": 445
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 628,
+                        "endColumn": 84,
+                        "endOffset": 708
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 450,
+                    "endColumn": 56,
+                    "endOffset": 502
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 965,
+                        "endColumn": 56,
+                        "endOffset": 1017
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 507,
+                    "endColumn": 47,
+                    "endOffset": 550
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 117,
+                        "endColumn": 47,
+                        "endOffset": 160
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 555,
+                    "endColumn": 55,
+                    "endOffset": 606
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 213,
+                        "endColumn": 55,
+                        "endOffset": 264
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 611,
+                    "endColumn": 79,
+                    "endOffset": 686
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 494,
+                        "endColumn": 79,
+                        "endOffset": 569
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 691,
+                    "endColumn": 61,
+                    "endOffset": 748
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 432,
+                        "endColumn": 61,
+                        "endOffset": 489
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 753,
+                    "endColumn": 60,
+                    "endOffset": 809
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 60,
+                        "endOffset": 112
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 814,
+                    "endColumn": 37,
+                    "endOffset": 847
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 816,
+                        "endColumn": 37,
+                        "endOffset": 849
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 852,
+                    "endColumn": 58,
+                    "endOffset": 906
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 854,
+                        "endColumn": 58,
+                        "endOffset": 908
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 911,
+                    "endColumn": 56,
+                    "endOffset": 963
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 713,
+                        "endColumn": 56,
+                        "endOffset": 765
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 968,
+                    "endColumn": 75,
+                    "endOffset": 1039
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 269,
+                        "endColumn": 75,
+                        "endOffset": 340
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1044,
+                    "endColumn": 86,
+                    "endOffset": 1126
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 345,
+                        "endColumn": 86,
+                        "endOffset": 427
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1131,
+                    "endColumn": 51,
+                    "endOffset": 1178
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 913,
+                        "endColumn": 51,
+                        "endOffset": 960
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1183,
+                    "endColumn": 90,
+                    "endOffset": 1269
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1082,
+                        "endColumn": 90,
+                        "endOffset": 1168
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1274,
+                    "endColumn": 59,
+                    "endOffset": 1329
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1022,
+                        "endColumn": 59,
+                        "endOffset": 1077
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1334,
+                    "endColumn": 45,
+                    "endOffset": 1375
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 770,
+                        "endColumn": 45,
+                        "endOffset": 811
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1380,
+                    "endLine": 33,
+                    "endColumn": 10,
+                    "endOffset": 1802
+                },
+                "from": {
+                    "file": "/Users/se9/AndroidStudioProjects/WordLookup/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 2,
+                        "startOffset": 53,
+                        "endLine": 9,
+                        "endColumn": 10,
+                        "endOffset": 475
+                    }
+                }
+            }
+        ]
+    }
+]
