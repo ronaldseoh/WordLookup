@@ -16,7 +16,7 @@
     <string name="help">Help</string>
     <string name="howtouse">How to use WordLookup</string>
     <string name="preferences">Preferences</string>
-    <string name="about">WordLookup by Icechen1</string>
+    <string name="about">WordLookup by Ronald Seoh (ronaldseoh@icloud.com)</string>
     <string name="shorttts">Do not read definition</string>
     <string name="shortTtsDef">Only read word pronunciation using text to speech.</string>
 
