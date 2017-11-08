@@ -14,10 +14,8 @@ public class TTS extends AsyncTask<String[], Integer, String> implements OnInitL
 	private String definition;
 	private String word;
 	
-	public void start(String[] d){
-		
+	public void start(String[] d) {
 
-        
 		word = d[0];
         definition = d[1];
         mTts = new TextToSpeech(MainActivity.context, this);
@@ -30,18 +28,16 @@ public class TTS extends AsyncTask<String[], Integer, String> implements OnInitL
         	// handler.post(runOnResult);
             int result = mTts.setLanguage(Locale.US);
             
-            if (result == TextToSpeech.LANG_MISSING_DATA
-                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("WORDLOOKUP", "TTS: This Language is not supported");
             } else {
                 Log.i("WORDLOOKUP","Reading out definition.");
-                if(MainActivity.shortTTS){
+                if (MainActivity.shortTTS) {
                     Log.i("WORDLOOKUP", "TTS: Reading Word: " + word);
             		mTts.speak(word, TextToSpeech.QUEUE_FLUSH, null);	
-                }else{
+                } else {
             		mTts.speak(definition, TextToSpeech.QUEUE_FLUSH, null);             	
                 }
-
             }
 
             Handler handler = new Handler();
@@ -64,10 +60,10 @@ public class TTS extends AsyncTask<String[], Integer, String> implements OnInitL
         }
 
 	private Runnable StopTTS = new Runnable() {
-		   public void run() {
-	    		mTts.stop();
-	    		mTts.shutdown();
-	    		Log.i("WORDLOOKUP", "TTS Stopped.");
-		   }
-		};
+	   public void run() {
+			mTts.stop();
+			mTts.shutdown();
+			Log.i("WORDLOOKUP", "TTS Stopped.");
+	   }
+	};
 }

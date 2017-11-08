@@ -14,8 +14,6 @@ import net.jeremybrooks.knicker.WordApi;
 import net.jeremybrooks.knicker.dto.Definition;
 import net.jeremybrooks.knicker.dto.TokenStatus;
 
-import net.iamblogger.wordlookup.PorterStemmer;
-
 public class API extends AsyncTask<String, Integer, String>{
 	private String result; 
 	public String finalword;
@@ -130,13 +128,14 @@ public class API extends AsyncTask<String, Integer, String>{
 	}
 
 	private Runnable runOnResult = new Runnable() {
-		   public void run() {
-			   if(MainActivity.toggleTTS){
-				   String[] ThingsToSay = {word,result};
-			        TTS mTTS = new TTS();
-			        mTTS.execute(ThingsToSay);
-			   } 
-	        	ShowToast.show(result);
-		   }
+		public void run() {
+			if (MainActivity.toggleTTS) {
+				String[] ThingsToSay = {word,result};
+				TTS mTTS = new TTS();
+				mTTS.execute(ThingsToSay);
+			}
+
+			ShowToast.show(result);
+		}
 	};
 }

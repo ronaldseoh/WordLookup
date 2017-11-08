@@ -39,25 +39,23 @@ public class MainActivity extends Activity{
     private int TTS_CHECK_CODE = 0;
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	 try{
+    	 try {
     	 	if (requestCode == TTS_CHECK_CODE) {
 				if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
 					Log.i("WORDLOOKUP","TTS Data found.");
-				}
-            else {
-            	if (toggleTTS) {
-                    Log.i("WORDLOOKUP","Installing TTS Data.");
-            		//no data - install it now
-            		Intent installTTSIntent = new Intent();
-            		installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-            		startActivity(installTTSIntent);
+				} else {
+            		if (toggleTTS) {
+						Log.i("WORDLOOKUP","Installing TTS Data.");
+						//no data - install it now
+						Intent installTTSIntent = new Intent();
+						installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+						startActivity(installTTSIntent);
+            		}
             	}
-            }
-        }     
-    }
-    catch(Exception e){
-		e.printStackTrace();
-    }
+        	}
+    	 } catch(Exception e) {
+			e.printStackTrace();
+    	 }
 }
     
 	@Override
@@ -65,12 +63,11 @@ public class MainActivity extends Activity{
         super.onCreate(savedInstanceState);
         
         //check for TTS data
-        try{
-        Intent checkTTSIntent = new Intent();
-        checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-        startActivityForResult(checkTTSIntent, TTS_CHECK_CODE);
-        }
-        catch(Exception e){
+        try {
+			Intent checkTTSIntent = new Intent();
+			checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+			startActivityForResult(checkTTSIntent, TTS_CHECK_CODE);
+        } catch(Exception e) {
 			e.printStackTrace();
         }
         
@@ -78,6 +75,7 @@ public class MainActivity extends Activity{
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
+
         //Set a context
         context = getApplicationContext(); 
         
@@ -86,9 +84,9 @@ public class MainActivity extends Activity{
          */
     	LayoutInflater inflater = getLayoutInflater();
     	
-    	layout = inflater.inflate(R.layout.toast,
-    	                               (ViewGroup) findViewById(R.id.toast_layout_root));
+    	layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_layout_root));
     	textbox = (TextView) layout.findViewById(R.id.text);
+
         /*
          * Loading... Toast
          */
@@ -101,7 +99,6 @@ public class MainActivity extends Activity{
     	toast.setView(MainActivity.layout);
     	toast.setDuration(duration);
     	toast.show();
-        
 
     	/*
     	 * Loads Settings
@@ -127,7 +124,6 @@ public class MainActivity extends Activity{
 
             else {
                 // Handle other intents, such as being started from the home screen
-        	
                 finish();
             }
         }
