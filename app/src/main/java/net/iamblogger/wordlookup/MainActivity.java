@@ -40,12 +40,12 @@ public class MainActivity extends Activity{
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	 try{
-    		 if (requestCode == TTS_CHECK_CODE) {
-            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
-                Log.i("WORDLOOKUP","TTS Data found.");
-            }
+    	 	if (requestCode == TTS_CHECK_CODE) {
+				if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+					Log.i("WORDLOOKUP","TTS Data found.");
+				}
             else {
-            	if(toggleTTS){
+            	if (toggleTTS) {
                     Log.i("WORDLOOKUP","Installing TTS Data.");
             		//no data - install it now
             		Intent installTTSIntent = new Intent();
@@ -123,11 +123,13 @@ public class MainActivity extends Activity{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} // Handle text being sent
-        } else {
-            // Handle other intents, such as being started from the home screen
+            }
+
+            else {
+                // Handle other intents, such as being started from the home screen
         	
-            finish();
-        }
+                finish();
+            }
         }
     }
 

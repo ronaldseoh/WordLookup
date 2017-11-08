@@ -14,6 +14,8 @@ import net.jeremybrooks.knicker.WordApi;
 import net.jeremybrooks.knicker.dto.Definition;
 import net.jeremybrooks.knicker.dto.TokenStatus;
 
+import net.iamblogger.wordlookup.PorterStemmer;
+
 public class API extends AsyncTask<String, Integer, String>{
 	private String result; 
 	public String finalword;
@@ -35,7 +37,7 @@ public class API extends AsyncTask<String, Integer, String>{
 		// resource xml file to store my api key.
 		// If you want to compile this project yourself,
 		// go to http://developer.wordnik.com, get your own key,
-		// and store it as a string with name 'wordnik_api_key'
+		// and store it as a string with name 'wordnik_key'
 		// (You probably would want to store that string in a separate xml file
 		// not tracked by git)
 		// NOTE: R.string.<name> does not return the string value itself;
@@ -75,10 +77,12 @@ public class API extends AsyncTask<String, Integer, String>{
 		 * CLEAN UP
 		 */
 		int limit = Integer.parseInt(MainActivity.NumOfDef);
-		boolean relatedwords = true;
-		boolean roots = true;
 
-		List<Definition> def = WordApi.definitions(finalword,limit,null,relatedwords, null, roots, false);
+		PorterStemmer stemmer = new PorterStemmer();
+
+		finalword = stemmer.stemWord(finalword);
+
+		List<Definition> def = WordApi.definitions(finalword, limit,null, true, null, true, false);
 
 		Log.i("SWIFTDICT","Found " + def.size() + " definitions.");
 
@@ -86,14 +90,15 @@ public class API extends AsyncTask<String, Integer, String>{
 			result = d.getWord() + ": \n";
 			word = d.getWord();
 		}
+
 		int i = 1;
+
 		for (Definition d : def) {
 			//		return((i++) + ") " + d.getPartOfSpeech() + ": " + d.getText());
 			result += i + ") " + d.getPartOfSpeech() + ": " + d.getText() + "\n";
 			Log.d("WORDLOOKUP",result);
 			i++;
 		}
-
     }
 
 	@Override
@@ -133,5 +138,5 @@ public class API extends AsyncTask<String, Integer, String>{
 			   } 
 	        	ShowToast.show(result);
 		   }
-		};
+	};
 }
