@@ -20,7 +20,10 @@ public class API extends AsyncTask<String, Integer, String>{
 	public String word = "";
 	
 	private static boolean isNetworkAvailable() {
-	    ConnectivityManager connectivityManager = (ConnectivityManager) MainActivity.context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	    ConnectivityManager connectivityManager = (ConnectivityManager)
+				MainActivity.context.getSystemService(
+						Context.CONNECTIVITY_SERVICE
+				);
 	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 	    return activeNetworkInfo != null;
 	}
@@ -40,20 +43,34 @@ public class API extends AsyncTask<String, Integer, String>{
 		// not tracked by git)
 		// NOTE: R.string.<name> does not return the string value itself;
 		// It just gives you the id
-    	System.setProperty("WORDNIK_API_KEY", "" + MainActivity.context.getString(R.string.wordnik_key));
+    	System.setProperty(
+    			"WORDNIK_API_KEY",
+				"" + MainActivity.context.getString(R.string.wordnik_key)
+		);
 		return true;
+	}
+
+	/* Input Sanitization */
+	private void CleanInput(String[] wordarray) throws Exception {
+
+		word = wordarray[0];
+
+		//Lower case and clean up everything
+		finalword = word.toLowerCase();
+
+		//removes symbols from first and last character
+		finalword = finalword.replaceAll("^[^\\p{L}\\p{N}]$*","");
+
+		//replaces spaces
+		finalword = finalword.replaceAll("[\\s]","%20");
+
 	}
 	
     public void GetDefinition(String[] wordarray) throws Exception {
 
-    	//Lower case and clean up everything
-		word = wordarray[0];
-		String lcword = word.toLowerCase();
-		String lettersword = lcword.replaceAll("^[^\\p{L}\\p{N}]$",""); //removes symbols from first and last character
-		finalword = lettersword.replaceAll("[\\s]","%20"); //replaces spaces
+        CleanInput(wordarray);
 
 		if (!Init()) {
-
 			result = word +": Error, check your network connection.";
 			return;
 		}
@@ -67,35 +84,52 @@ public class API extends AsyncTask<String, Integer, String>{
 			result = "API key is invalid!";
 		}
 
-
 		// get a list of definitions for a word
-		/* TODO:
-		 * It's a mess.
-		 * Make them optionable
-		 * CLEAN UP
-		 */
 		int limit = Integer.parseInt(MainActivity.NumOfDef);
 
-		PorterStemmer stemmer = new PorterStemmer();
+		boolean definitionFetchComplete = false;
 
-		finalword = stemmer.stemWord(finalword);
+		while (!definitionFetchComplete) {
+			List<Definition> def = WordApi.definitions(
+					finalword,
+					limit,
+					null,
+					true,
+					null,
+					true,
+					false
+			);
 
-		List<Definition> def = WordApi.definitions(finalword, limit,null, true, null, true, false);
+			Log.i("SWIFTDICT","Found " + def.size() + " definitions.");
 
-		Log.i("SWIFTDICT","Found " + def.size() + " definitions.");
+			for (Definition d : def) {
+				result = d.getWord() + ": \n";
+				word = d.getWord();
+			}
 
-		for (Definition d : def) {
-			result = d.getWord() + ": \n";
-			word = d.getWord();
-		}
+			String onlyDefinitionText = "";
 
-		int i = 1;
+			if (def.size() == 1) {
+				onlyDefinitionText = def.get(0).getText();
 
-		for (Definition d : def) {
-			//		return((i++) + ") " + d.getPartOfSpeech() + ": " + d.getText());
-			result += i + ") " + d.getPartOfSpeech() + ": " + d.getText() + "\n";
-			Log.d("WORDLOOKUP",result);
-			i++;
+				onlyDefinitionText = onlyDefinitionText.toLowerCase();
+			}
+
+			if (onlyDefinitionText.matches("([.|\\s]+form\\s+of\\s+([a-z|0-9]+))+")) {
+				PorterStemmer stemmer = new PorterStemmer();
+
+				finalword = stemmer.stemWord(finalword);
+			} else {
+				definitionFetchComplete = true;
+
+				int i = 1;
+
+				for (Definition d : def) {
+					result += i + ") " + d.getPartOfSpeech() + ": " + d.getText() + "\n";
+					Log.d("WORDLOOKUP",result);
+					i++;
+				}
+			}
 		}
     }
 
@@ -104,7 +138,6 @@ public class API extends AsyncTask<String, Integer, String>{
 		try {
 			GetDefinition(words);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			//Looper -> workaround
 			Looper.prepare();
@@ -112,6 +145,7 @@ public class API extends AsyncTask<String, Integer, String>{
 			Handler handler=new Handler();
     		handler.post(runOnResult);
 		}
+
 		return null;
 	}
 	@Override
@@ -119,6 +153,7 @@ public class API extends AsyncTask<String, Integer, String>{
 		// async task finished
 		Handler handler=new Handler();
 		Log.v("SWIFTDICT", "Progress Finished.");
+
         if (result != null) {
     		handler.post(runOnResult);
         } else {
