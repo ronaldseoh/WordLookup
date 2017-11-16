@@ -115,7 +115,7 @@ public class API extends AsyncTask<String, Integer, String>{
 				onlyDefinitionText = onlyDefinitionText.toLowerCase();
 			}
 
-			if (onlyDefinitionText.matches("([.|\\s]+form\\s+of\\s+([a-z|0-9]+))+")) {
+			if (onlyDefinitionText.matches("^.+\\s+form\\s+of\\s+([a-z|0-9]+).*$")) {
 				PorterStemmer stemmer = new PorterStemmer();
 
 				finalword = stemmer.stemWord(finalword);
