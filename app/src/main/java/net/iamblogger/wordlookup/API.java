@@ -29,9 +29,9 @@ public class API extends AsyncTask<String, Integer, String>{
 	}
 	
 	private static boolean Init() {
-	     boolean networkState = isNetworkAvailable();
+		boolean networkState = isNetworkAvailable();
 
-	     if (!networkState) return false;
+		if (!networkState) return false;
 	
     	// API key here
 		// Instead of hard-coding the api key, I created another
@@ -47,6 +47,7 @@ public class API extends AsyncTask<String, Integer, String>{
     			"WORDNIK_API_KEY",
 				"" + MainActivity.context.getString(R.string.wordnik_key)
 		);
+
 		return true;
 	}
 
@@ -89,7 +90,9 @@ public class API extends AsyncTask<String, Integer, String>{
 
 		boolean definitionFetchComplete = false;
 
-		while (!definitionFetchComplete) {
+		int retryCount = 0;
+
+		while (!definitionFetchComplete && retryCount <= 30) {
 			List<Definition> def = WordApi.definitions(
 					finalword,
 					limit,
@@ -115,10 +118,12 @@ public class API extends AsyncTask<String, Integer, String>{
 				onlyDefinitionText = onlyDefinitionText.toLowerCase();
 			}
 
-			if (onlyDefinitionText.matches("^.+\\s+form\\s+of\\s+([a-z|0-9]+).*$")) {
+			if ((def.size() == 0) || (onlyDefinitionText.matches("^.+\\s+form\\s+of\\s+([a-z|0-9]+).*$"))) {
 				PorterStemmer stemmer = new PorterStemmer();
 
 				finalword = stemmer.stemWord(finalword);
+
+				retryCount++;
 			} else {
 				definitionFetchComplete = true;
 
