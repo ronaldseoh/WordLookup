@@ -1,6 +1,7 @@
 package net.iamblogger.wordlookup;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -52,24 +53,24 @@ public class API extends AsyncTask<String, Integer, String>{
 	}
 
 	/* Input Sanitization */
-	private void CleanInput(String[] wordarray) throws Exception {
-
-		word = wordarray[0];
+	private static String CleanInput(String input) throws Exception {
 
 		//Lower case and clean up everything
-		finalword = word.toLowerCase();
+		String cleanedInput = input.toLowerCase();
 
 		//removes symbols from first and last character
-		finalword = finalword.replaceAll("^[^\\p{L}\\p{N}]$*","");
+		cleanedInput = cleanedInput.replaceAll("^[^\\p{L}\\p{N}]$*","");
 
 		//replaces spaces
-		finalword = finalword.replaceAll("[\\s]","%20");
+		cleanedInput = cleanedInput.replaceAll("[\\s]","%20");
 
+		return cleanedInput;
 	}
 	
     public void GetDefinition(String[] wordarray) throws Exception {
 
-        CleanInput(wordarray);
+		word = wordarray[0];
+		finalword = wordarray[0];
 
 		if (!Init()) {
 			result = word +": Error, check your network connection.";
@@ -92,8 +93,15 @@ public class API extends AsyncTask<String, Integer, String>{
 
 		int retryCount = 0;
 
+		String stemmed_word = "";
+
+		List<Definition> def = new ArrayList<Definition>();
+
 		while (!definitionFetchComplete && retryCount <= 30) {
-			List<Definition> def = WordApi.definitions(
+
+			finalword = CleanInput(finalword);
+
+			def = WordApi.definitions(
 					finalword,
 					limit,
 					null,
@@ -116,25 +124,36 @@ public class API extends AsyncTask<String, Integer, String>{
 				onlyDefinitionText = def.get(0).getText();
 
 				onlyDefinitionText = onlyDefinitionText.toLowerCase();
-			}
 
-			if ((def.size() == 0) || (onlyDefinitionText.matches("^.+\\s+form\\s+of\\s+([a-z|0-9]+).*$"))) {
+				if (onlyDefinitionText.matches("^.+\\s+form\\s+of\\s+([a-z|0-9]+).*$")) {
+					finalword = onlyDefinitionText.replaceAll(".+\\s+form\\s+of\\s+", "");
+					retryCount++;
+				} else {
+					definitionFetchComplete = true;
+				}
+
+			} else if (def.size() == 0) {
 				PorterStemmer stemmer = new PorterStemmer();
 
-				finalword = stemmer.stemWord(finalword);
+				stemmed_word = stemmer.stemWord(finalword);
 
-				retryCount++;
+				if (stemmed_word.equals(finalword)) {
+					definitionFetchComplete = true;
+				} else {
+					finalword = stemmed_word;
+					retryCount++;
+				}
 			} else {
 				definitionFetchComplete = true;
-
-				int i = 1;
-
-				for (Definition d : def) {
-					result += i + ") " + d.getPartOfSpeech() + ": " + d.getText() + "\n";
-					Log.d("WORDLOOKUP",result);
-					i++;
-				}
 			}
+		}
+
+		int i = 1;
+
+		for (Definition d : def) {
+			result += i + ") " + d.getPartOfSpeech() + ": " + d.getText() + "\n";
+			Log.d("WORDLOOKUP",result);
+			i++;
 		}
     }
 
