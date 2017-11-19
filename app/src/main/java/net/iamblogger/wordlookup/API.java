@@ -93,7 +93,7 @@ public class API extends AsyncTask<String, Integer, String>{
 
         int retryCount = 0;
 
-        String stemmed_word = "";
+        String stemmedWord = "";
 
         List<Definition> def = new ArrayList<Definition>();
 
@@ -135,12 +135,12 @@ public class API extends AsyncTask<String, Integer, String>{
             } else if (def.size() == 0) {
                 PorterStemmer stemmer = new PorterStemmer();
 
-                stemmed_word = stemmer.stemWord(finalword);
+                stemmedWord = stemmer.stemWord(finalword);
 
-                if (stemmed_word.equals(finalword)) {
+                if (stemmedWord.equals(finalword)) {
                     definitionFetchComplete = true;
                 } else {
-                    finalword = stemmed_word;
+                    finalword = stemmedWord;
                     retryCount++;
                 }
             } else {
