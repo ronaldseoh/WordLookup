@@ -61,9 +61,6 @@ public class API extends AsyncTask<String, Integer, String>{
         //removes symbols from first and last character
         cleanedInput = cleanedInput.replaceAll("^[^\\p{L}\\p{N}]$*","");
 
-        //replaces spaces
-        cleanedInput = cleanedInput.replaceAll("[\\s]","%20");
-
         return cleanedInput;
     }
     
