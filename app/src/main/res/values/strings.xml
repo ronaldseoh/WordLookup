@@ -9,7 +9,7 @@
     <string name="websiteTitle">Website</string>
     <string name="websiteDescription">Tap here to visit https://github.com/ronaldseoh/WordLookup</string>
     <string name="versionTitle">Version</string>
-    <string name="version">0.2.1</string>
+    <string name="version">0.5</string>
     <string name="numberofdefinitions">Number of definitions shown</string>
     <string name="numofdefdescript">The number of definitions shown in popup.</string>
     <string name="displaydelay">Popup Display Length</string>
