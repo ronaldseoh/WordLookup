@@ -1,8 +1,5 @@
 package net.iamblogger.wordlookup;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -10,12 +7,8 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import net.jeremybrooks.knicker.AccountApi;
-import net.jeremybrooks.knicker.WordApi;
-import net.jeremybrooks.knicker.dto.Definition;
-import net.jeremybrooks.knicker.dto.TokenStatus;
 
-public class API extends AsyncTask<String, Integer, String>{
+public class LookupCore extends AsyncTask<String, Integer, String>{
     private String result; 
     public String finalword;
     public String word = "";
@@ -48,6 +41,7 @@ public class API extends AsyncTask<String, Integer, String>{
                 "WORDNIK_API_KEY",
                 "" + MainActivity.context.getString(R.string.wordnik_key)
         );
+
 
         return true;
     }
@@ -92,7 +86,11 @@ public class API extends AsyncTask<String, Integer, String>{
 
         String stemmedWord = "";
 
+        String finalword_encoded = "";
+
         List<Definition> def = new ArrayList<Definition>();
+
+        sourceDictionary.add(Knicker.SourceDictionary.all);
 
         while (!definitionFetchComplete && retryCount <= 30) {
 
@@ -103,7 +101,7 @@ public class API extends AsyncTask<String, Integer, String>{
                     limit,
                     null,
                     true,
-                    null,
+                    sourceDictionary,
                     true,
                     false
             );

@@ -16,17 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity{
-    /** Called when the activity is first created.
-     * TODO
-     * text to speech
-     * big and toast mode
-     * translate
-     * other sources
-     * ads
-     * multiple languages
-     * longer times
-     * offline
-     */
+    /** Called when the activity is first created.*/
     public static Context context;
     public static View layout;
     public static TextView textbox;
@@ -131,8 +121,8 @@ public class MainActivity extends Activity{
 
     void handleSendText(Intent intent) throws Exception {
         String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
-        API mAPI = new API();
-        mAPI.execute(sharedText);
+        LookupCore mLookupCore = new LookupCore();
+        mLookupCore.execute(sharedText);
         finish();
     }
 }
