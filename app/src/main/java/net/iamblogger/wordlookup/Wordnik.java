@@ -1,21 +1,15 @@
 package net.iamblogger.wordlookup;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.net.Uri;
 import android.util.Log;
 
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Wordnik.java replaces Knicker and provides a simple access to Wordnik APIs with JSON response.
@@ -23,11 +17,10 @@ import java.util.List;
 
 class Wordnik {
 
-    private RequestQueue queue = Volley.newRequestQueue(MainActivity.context);
     private String apiKey;
     private String tokenStatusURL = "http://api.wordnik.com/v4/account.json/apiTokenStatus?api_key=";
 
-    class WordnikDefinitionResult {
+    class DefinitionResult {
 
         private boolean success;
 
@@ -92,100 +85,84 @@ class Wordnik {
         }
     }
 
-    public Wordnik(String key) {
+    Wordnik(String key) {
         this.apiKey = key;
         this.tokenStatusURL = this.tokenStatusURL + this.apiKey;
     }
 
-    protected WordnikDefinitionResult getDefinition(String word) {
+    ArrayList<DefinitionResult> getDefinition(String word, int limit) {
 
         String requestURL = "http://api.wordnik.com/v4/word.json/"
                         + Uri.encode(word)
                         + "/definitions?"
                         + "&includeRelated=true"
                         + "&sourceDictionaries=all"
-                        + "&useCanonical=true"
+                        + "&useCanonical=false"
                         + "&includeTags=false"
                         + "&api_key=" + this.apiKey;
 
-        final WordnikDefinitionResult definitionResult = new WordnikDefinitionResult();
+        String line, json = "";
+        JSONArray jsonArray;
+        ArrayList<DefinitionResult> definitions = new ArrayList<DefinitionResult>();
 
-        JsonArrayRequest jsArrayRequest = new JsonArrayRequest (
-                Request.Method.GET,
-                requestURL,
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.i("WORDNIK", "Wordnik Response Success!");
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject definition = response.getJSONObject(i);
-                                definitionResult.setSourceDictionary(definition.getString("sourceDictionary"));
-                                definitionResult.setWord(definition.getString("word"));
-                                definitionResult.setPartOfSpeech(definition.getString("partOfSpeech"));
-                                definitionResult.setAttributionText(definition.getString("attributionText"));
-                                definitionResult.setText(definition.getString("text"));
-                                definitionResult.setScore(definition.getInt("score"));
-                            } catch (JSONException e) {
-                                Log.e("WORDNIK", "Error parsing response");
-                                break;
-                            }
+        try {
+            URL urls = new URL(requestURL);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(urls.openStream(), "UTF-8"));
 
+            while ((line = reader.readLine()) != null) {
+                json += line;
+            }
 
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("WORDNIK", "Wordnik Response Error!");
+            jsonArray = new JSONArray(json);
 
-                    }
-                }
-        );
+            for (int i = 0; i < limit; i++) {
 
-        this.queue.add(jsArrayRequest);
+                JSONObject definition = jsonArray.getJSONObject(i);
 
-        return definitionResult;
+                DefinitionResult definitionResult = new DefinitionResult();
+
+                definitionResult.setSourceDictionary(definition.getString("sourceDictionary"));
+                definitionResult.setWord(definition.getString("word"));
+                definitionResult.setPartOfSpeech(definition.getString("partOfSpeech"));
+                definitionResult.setAttributionText(definition.getString("attributionText"));
+                definitionResult.setText(definition.getString("text"));
+                definitionResult.setScore(definition.getInt("score"));
+
+                definitions.add(definitionResult);
+            }
+
+        } catch (Exception e) {
+            Log.e("WORDNIK", "Error getting definitions from Wordnik.");
+        }
+
+        return definitions;
     }
 
-    protected void apiTokenStatus() {
-        JsonArrayRequest jsArrayRequest = new JsonArrayRequest (
-                Request.Method.GET,
-                this.tokenStatusURL,
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.i("WORDNIK", "Wordnik Response Success!");
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject definition = response.getJSONObject(i);
-                                definitionResult.setSourceDictionary(definition.getString("sourceDictionary"));
-                                definitionResult.setWord(definition.getString("word"));
-                                definitionResult.setPartOfSpeech(definition.getString("partOfSpeech"));
-                                definitionResult.setAttributionText(definition.getString("attributionText"));
-                                definitionResult.setText(definition.getString("text"));
-                                definitionResult.setScore(definition.getInt("score"));
-                            } catch (JSONException e) {
-                                Log.e("WORDNIK", "Error parsing response");
-                                break;
-                            }
+    boolean apiTokenStatus() {
 
+        boolean isValid = false;
 
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("WORDNIK", "Wordnik Response Error!");
+        String line, json = "";
+        JSONObject jsonObject;
 
-                    }
-                }
-        );
+        try {
+            URL urls = new URL(tokenStatusURL);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(urls.openStream(), "UTF-8"));
 
-        this.queue.add(jsArrayRequest);
+            while ((line = reader.readLine()) != null) {
+                json += line;
+            }
+
+            jsonObject = new JSONObject(json);
+
+            if (jsonObject.getString("valid").equals("true")) {
+                isValid = true;
+            }
+
+        } catch (Exception e) {
+            Log.e("WORDNIK", "Error getting the API status from Wordnik.");
+        }
+
+        return isValid;
     }
 }

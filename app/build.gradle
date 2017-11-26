@@ -19,6 +19,6 @@ android {
 }
 
 dependencies {
-    compile group: 'net.jeremybrooks', name: 'knicker', version: '2.4.1'
-    compile 'com.android.volley:volley:1.0.0'
+    //compile group: 'net.jeremybrooks', name: 'knicker', version: '2.4.1'
+    //compile 'com.android.volley:volley:1.0.0'
 }

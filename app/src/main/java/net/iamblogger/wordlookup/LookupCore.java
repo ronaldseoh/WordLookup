@@ -8,10 +8,26 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class LookupCore extends AsyncTask<String, Integer, String>{
     private String result; 
-    public String finalword;
+    public String finalWord;
     public String word = "";
+
+    // API key here
+    // Instead of hard-coding the api key, I created another
+    // resource xml file to store my api key.
+    // If you want to compile this project yourself,
+    // go to http://developer.wordnik.com, get your own key,
+    // and store it as a string with name 'wordnik_key'
+    // (You probably would want to store that string in a separate xml file
+    // not tracked by git)
+    // NOTE: R.string.<name> does not return the string value itself;
+    // It just gives you the id
+    private Wordnik wordnikController = new Wordnik(
+            MainActivity.context.getString(R.string.wordnik_key)
+    );
     
     private static boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager)
@@ -26,22 +42,6 @@ public class LookupCore extends AsyncTask<String, Integer, String>{
         boolean networkState = isNetworkAvailable();
 
         if (!networkState) return false;
-    
-        // API key here
-        // Instead of hard-coding the api key, I created another
-        // resource xml file to store my api key.
-        // If you want to compile this project yourself,
-        // go to http://developer.wordnik.com, get your own key,
-        // and store it as a string with name 'wordnik_key'
-        // (You probably would want to store that string in a separate xml file
-        // not tracked by git)
-        // NOTE: R.string.<name> does not return the string value itself;
-        // It just gives you the id
-        System.setProperty(
-                "WORDNIK_API_KEY",
-                "" + MainActivity.context.getString(R.string.wordnik_key)
-        );
-
 
         return true;
     }
@@ -61,7 +61,7 @@ public class LookupCore extends AsyncTask<String, Integer, String>{
     public void GetDefinition(String[] wordarray) throws Exception {
 
         word = wordarray[0];
-        finalword = wordarray[0];
+        finalWord = wordarray[0];
 
         if (!Init()) {
             result = word +": Error, check your network connection.";
@@ -69,8 +69,9 @@ public class LookupCore extends AsyncTask<String, Integer, String>{
         }
 
         // check the status of the API key
-        TokenStatus status = AccountApi.apiTokenStatus();
-        if (status.isValid()) {
+        Boolean apiOK = wordnikController.apiTokenStatus();
+
+        if (apiOK) {
             Log.i("SWIFTDICT", "API key is valid.");
         } else {
             Log.e("SWIFTDICT", "API key is invalid.");
@@ -86,29 +87,19 @@ public class LookupCore extends AsyncTask<String, Integer, String>{
 
         String stemmedWord = "";
 
-        String finalword_encoded = "";
+        String finalWord_encoded = "";
 
-        List<Definition> def = new ArrayList<Definition>();
-
-        sourceDictionary.add(Knicker.SourceDictionary.all);
+        ArrayList<Wordnik.DefinitionResult> def = new ArrayList<Wordnik.DefinitionResult>();
 
         while (!definitionFetchComplete && retryCount <= 30) {
 
-            finalword = CleanInput(finalword);
+            finalWord = CleanInput(finalWord);
 
-            def = WordApi.definitions(
-                    finalword,
-                    limit,
-                    null,
-                    true,
-                    sourceDictionary,
-                    true,
-                    false
-            );
+            def = wordnikController.getDefinition(finalWord, limit);
 
             Log.i("SWIFTDICT","Found " + def.size() + " definitions.");
 
-            for (Definition d : def) {
+            for (Wordnik.DefinitionResult d : def) {
                 result = d.getWord() + ": \n";
                 word = d.getWord();
             }
@@ -121,7 +112,7 @@ public class LookupCore extends AsyncTask<String, Integer, String>{
                 onlyDefinitionText = onlyDefinitionText.toLowerCase();
 
                 if (onlyDefinitionText.matches("^.+\\s+form\\s+of\\s+([a-z|0-9]+).*$")) {
-                    finalword = onlyDefinitionText.replaceAll(".+\\s+form\\s+of\\s+", "");
+                    finalWord = onlyDefinitionText.replaceAll(".+\\s+form\\s+of\\s+", "");
                     retryCount++;
                 } else {
                     definitionFetchComplete = true;
@@ -130,12 +121,12 @@ public class LookupCore extends AsyncTask<String, Integer, String>{
             } else if (def.size() == 0) {
                 PorterStemmer stemmer = new PorterStemmer();
 
-                stemmedWord = stemmer.stemWord(finalword);
+                stemmedWord = stemmer.stemWord(finalWord);
 
-                if (stemmedWord.equals(finalword)) {
+                if (stemmedWord.equals(finalWord)) {
                     definitionFetchComplete = true;
                 } else {
-                    finalword = stemmedWord;
+                    finalWord = stemmedWord;
                     retryCount++;
                 }
             } else {
@@ -145,9 +136,9 @@ public class LookupCore extends AsyncTask<String, Integer, String>{
 
         int i = 1;
 
-        for (Definition d : def) {
+        for (Wordnik.DefinitionResult d : def) {
             result += i + ") " + d.getPartOfSpeech() + ": " + d.getText() + "\n";
-            Log.d("WORDLOOKUP",result);
+            Log.d("WORDLOOKUP", result);
             i++;
         }
     }
@@ -176,7 +167,7 @@ public class LookupCore extends AsyncTask<String, Integer, String>{
         if (result != null) {
             handler.post(runOnResult);
         } else {
-            result = finalword +": No definition found.";
+            result = finalWord +": No definition found.";
             handler.post(runOnResult);
         }
     }
